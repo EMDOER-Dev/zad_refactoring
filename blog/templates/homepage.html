@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for post in all_posts %}
+<div class="post-preview">
+    <h2 class="post-title">{{ post.title }}</h2>
+    <p class="post-meta">{{ post.pub_date.strftime('%Y-%m-%d') }}</p>
+    <p class="post-body">
+        {{ post.body }}
+    </p>
+    <a href="{{ url_for('edit_entry', entry_id=post.id) }}" class="edit-link">
+        <i class="fas fa-pencil-alt"></i> Edytuj
+    </a>
+</div>
+<hr>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h3>Dodaj nowy wpis</h3>
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+            {{ form.title.label(class="form-label") }}
+            {{ form.title(class="form-control") }}
+            {% for error in form.title.errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.body.label(class="form-label") }}
+            {{ form.body(class="form-control", rows=10) }}
+            {% for error in form.body.errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-check">
+            {{ form.is_published(class="form-check-input") }}
+            {{ form.is_published.label(class="form-check-label") }}
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Zapisz</button>
+    </form>
+</div>
+{% endblock %}
